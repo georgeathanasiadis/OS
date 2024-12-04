@@ -6,7 +6,7 @@
 #include <sys/shm.h>
 #include <unistd.h>
 
-// Semaphore functions
+//semaphore functions
 int create_semaphore(int num_semaphores) {
     int sem_id = semget(IPC_PRIVATE, num_semaphores, IPC_CREAT | IPC_PERMISSIONS);
     if (sem_id == -1) {

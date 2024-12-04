@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 
-// Function to spawn a new process
+//spawn new process
 pid_t spawn_process(void (*child_function)(void *), void *arg) {
     pid_t pid = fork();
     if (pid < 0) {
@@ -17,14 +17,14 @@ pid_t spawn_process(void (*child_function)(void *), void *arg) {
     return pid; // Parent process gets the PID of the child
 }
 
-// Function to terminate a process
+//terminate a process
 void terminate_process(pid_t pid) {
     if (kill(pid, SIGTERM) == -1) {
         handle_error("Failed to terminate process");
     }
 }
 
-// Function to wait for a process to terminate
+//wait for a process to terminate
 void wait_for_process(pid_t pid) {
     int status;
     if (waitpid(pid, &status, 0) == -1) {
@@ -38,7 +38,7 @@ void wait_for_process(pid_t pid) {
     }
 }
 
-// Utility function for error handling
+//error handling
 void handle_error(const char *message) {
     perror(message);
     exit(EXIT_FAILURE);

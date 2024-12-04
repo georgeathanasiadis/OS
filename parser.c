@@ -1,6 +1,6 @@
 #include "parser.h"
 
-// Initialize a CommandList
+//initialize CommandList
 static CommandList *initialize_command_list(int initial_capacity) {
     CommandList *cmd_list = (CommandList *)malloc(sizeof(CommandList));
     if (!cmd_list) {
@@ -20,7 +20,7 @@ static CommandList *initialize_command_list(int initial_capacity) {
     return cmd_list;
 }
 
-// Add a command to the CommandList
+//add command to the CommandList
 static void add_command(CommandList *cmd_list, int timestamp, const char *process_label, char command) {
     if (cmd_list->size == cmd_list->capacity) {
         cmd_list->capacity *= 2;
@@ -39,7 +39,7 @@ static void add_command(CommandList *cmd_list, int timestamp, const char *proces
     new_command->command = command;
 }
 
-// Parse the command file
+//parse command file
 CommandList *parse_command_file(const char *filename) {
     FILE *file = fopen(filename, "r");
     if (!file) {
@@ -67,7 +67,7 @@ CommandList *parse_command_file(const char *filename) {
     return cmd_list;
 }
 
-// Retrieve the next command based on the current timestamp
+//retrieve the next command based on current timestamp
 Command *get_next_command(CommandList *cmd_list, int current_time) {
     for (int i = 0; i < cmd_list->size; i++) {
         if (cmd_list->commands[i].timestamp == current_time) {
@@ -77,7 +77,7 @@ Command *get_next_command(CommandList *cmd_list, int current_time) {
     return NULL; // No command for the current time
 }
 
-// Free the memory allocated for the CommandList
+//free memory allocated for the CommandList
 void free_command_list(CommandList *cmd_list) {
     if (cmd_list) {
         free(cmd_list->commands);

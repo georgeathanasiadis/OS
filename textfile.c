@@ -1,6 +1,6 @@
 #include "textfile.h"
 
-// Load a text file into memory, line by line
+//load txt file into memory, line by line
 TextFile *load_text_file(const char *filename) {
     FILE *file = fopen(filename, "r");
     if (!file) {
@@ -22,9 +22,9 @@ TextFile *load_text_file(const char *filename) {
     size_t len = 0;
     ssize_t read;
 
-    // Read lines into the TextFile structure
+    //read lines into the TextFile structure
     while ((read = getline(&line, &len, file)) != -1) {
-        // Remove newline character if present
+        //remove newline character if present
         if (line[read - 1] == '\n') {
             line[read - 1] = '\0';
         }

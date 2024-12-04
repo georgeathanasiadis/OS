@@ -7,14 +7,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Structure to track child process information
+//structure to track child process information
 typedef struct {
-    pid_t pid;      // Process ID
-    int sem_id;     // Semaphore ID for the process
-    int active;     // Status: 1 if active, 0 otherwise
+    pid_t pid;      //process ID
+    int sem_id;     //semaphore ID for the process
+    int active;     //status: 1 if active, 0 if not
 } ChildProcess;
 
-// Function prototypes
+//function prototypes
 pid_t spawn_process(void (*child_function)(void *), void *arg);
 void terminate_process(pid_t pid);
 void wait_for_process(pid_t pid);

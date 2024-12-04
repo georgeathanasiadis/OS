@@ -3,7 +3,7 @@
 #include "ipc.h"
 #include "process.h"
 #include "utils.h"
-sadasdasd
+
 #define MAX_PROCESSES 5
 #define SHARED_MEM_SIZE 1024
 
@@ -38,13 +38,13 @@ int main(int argc, char *argv[]) {
     while (1) {
         LOG_INFO("Current time: %d", current_time);
 
-        // Execute commands for the current time
+        //execute commands for current time
         Command *cmd = get_next_command(cmd_list, current_time);
         while (cmd != NULL) {
             if (cmd->command == 'S') { // SPAWN
                 LOG_INFO("Spawning process %s", cmd->process_label);
 
-                // Find an available slot for the new process
+                //find an available slot for new process
                 int found = 0;
                 for (int i = 0; i < MAX_PROCESSES; i++) {
                     if (!child_processes[i].active) {
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
             } else if (cmd->command == 'T') { // TERMINATE
                 LOG_INFO("Terminating process %s", cmd->process_label);
 
-                // Find the process to terminate
+                //find the process to terminate
                 int found = 0;
                 for (int i = 0; i < MAX_PROCESSES; i++) {
                     if (child_processes[i].active) {
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
             cmd = get_next_command(cmd_list, current_time);
         }
 
-        // Randomly send messages to active processes
+        //randomly send messages to active processes
         for (int i = 0; i < MAX_PROCESSES; i++) {
             if (child_processes[i].active) {
                 char *line = get_random_line(txt_file);
