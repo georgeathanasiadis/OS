@@ -1,0 +1,5 @@
+Hello, this is the first line of text.
+Here comes the second line.
+This is the third line in the file.
+Another interesting line for testing.
+Final line to complete the text file.
